@@ -1,15 +1,14 @@
 import React from "react";
 import {useState, useEffect} from "react";
 import axios from "axios";
-import App from "../App";
 
 const apiKey = (process.env.REACT_APP_API_KEY);
 
 export default function Quoteme() {
   const apiKey = process.env.REACT_APP_API_KEY;
-const request = require('request');
+//const request = require('request');//
 let category = 'happiness';
-request.get({
+axios.get({
   url: 'https://api.api-ninjas.com/v1/quotes?category=' + category,
   headers: {
     'X-Api-Key': apiKey

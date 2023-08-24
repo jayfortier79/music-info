@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Quoteme from '../components/Quoteme'
+import Quoteme from './Quoteme.js'
 import {useState, useEffect} from "react";
 
 
@@ -11,8 +11,28 @@ export default function App () {
  
  
   const [posts, setPosts] = useState([]);
-
-  const access = axios.get('https://jsonplaceholder.typicode.com/photos')
+  var category = 'happiness';
+  const access = axios.get('https://api.api-ninjas.com/v1/quotes?category=' + category).then(function access(response) {
+    headers: { 
+    };  axios.defaults.headers.common = {
+      "X-API-Key": "REACT_APP_API_KEY",
+    };
+    },
+   function(error, response, body) {
+    if(error) return console.error('Request failed:', error);
+    else if(response.statusCode != 200) return console.error('Error:', response.statusCode, body.toString('utf8'));
+    else console.log(body)
+  });
+  
+  useEffect(() => {
+  
+  }, [])
+  const Setstate1 = () => {
+    const [posts, setPosts] = useState([]);
+    return <div>Setstate1</div>;
+  }
+  
+  /*axios.get('https://jsonplaceholder.typicode.com/photos')
   .then(function access(response) {
 console.log(response)
 })
@@ -23,7 +43,7 @@ console.log(error);
   useEffect(() => {
   
   }, [])
- /* const Setstate1 = () => {
+  const Setstate1 = () => {
     const [posts, setPosts] = useState([]);
     return <div>Setstate1</div>;
   }
