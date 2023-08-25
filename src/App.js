@@ -3,31 +3,34 @@ import Quoteme from './Quoteme.js'
 import {useState, useEffect} from "react";
 
 
-console.log(process.env.REACT_APP_API_KEY)
+
 
 
 export default function App () {
 
+  console.log(process.env.REACT_APP_API_KEY)
  
- 
-  const [posts, setPosts] = useState([]);
-  var category = 'happiness';
-  const access = axios.get('https://api.api-ninjas.com/v1/quotes?category=' + category).then(function access(response) {
-    headers: { 
-    };  axios.defaults.headers.common = {
-      "X-API-Key": "REACT_APP_API_KEY",
-    };
-    },
-   function(error, response, body) {
-    if(error) return console.error('Request failed:', error);
-    else if(response.statusCode != 200) return console.error('Error:', response.statusCode, body.toString('utf8'));
-    else console.log(body)
-  });
+  const [quote, setQuote] = useState([]);
+  
   
   useEffect(() => {
-  
+    var category = 'happiness';
+     axios.get('https://api.api-ninjas.com/v1/quotes?category=' + category, {
+      headers: { 
+        "X-Api-Key": process.env.REACT_APP_API_KEY,
+      }
+    } ).then(function access(response) {
+      setQuote(response.data)
+      },
+     /*function(error, response, body) {
+      if(error) return console.error('Request failed:', error);
+      else if(response.statusCode != 200) return console.error('Error:', response.statusCode, body.toString('utf8'));
+      else console.log(body)
+    }*/
+    
+    );
   }, [])
-  const Setstate1 = () => {
+  /*const Setstate1 = () => {
     const [posts, setPosts] = useState([]);
     return <div>Setstate1</div>;
   }
@@ -67,6 +70,7 @@ const fetchPosts = async() =>{
     <h2></h2> 
     </header>
 <button onclick={Quoteme}>click me!</button>
+(Quoteme)
     </body>
     
     
