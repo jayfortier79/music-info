@@ -89,11 +89,11 @@ let x5 = quote*/
       <div className='App'>
          <body>
   <header>
-    <h1>Happy Quotes</h1>
-    <h2>Happy Time</h2> 
-    <h3>{Place()}</h3>
+    <h2>Happy Quotes</h2>
+    <h3>Happy Time</h3> 
+    
     </header>
-    <button id='myButton' onClick={getQuote(quote)}>Happiness Quote</button>
+    <button id='myButton' onClick={getQuote()}>Happiness Quote</button>
     
 
     </body>

@@ -1,7 +1,6 @@
 import axios from 'axios';
-import Quoteme from './Quoteme.js'
 import {useState, useEffect} from "react";
-
+import Place from './Place'
 
 
 
@@ -30,6 +29,19 @@ export default function App () {
     
     );
   }, [])
+
+  function getQuote () {
+    let category = 'happiness';
+    axios.get('https://api.api-ninjas.com/v1/quotes?category=' + category, {
+     headers: { 
+       "X-Api-Key": process.env.REACT_APP_API_KEY,
+     }
+   } ).then(function access(response) {
+      setQuote(response.data)
+      
+     },
+ )};
+
   /*const Setstate1 = () => {
     const [posts, setPosts] = useState([]);
     return <div>Setstate1</div>;
@@ -68,13 +80,13 @@ const fetchPosts = async() =>{
       <div className='App'>
          <body>
   <header>
-    <h1>Sartre's List</h1>
-    <h2></h2> 
+    <h1>Happy Quotes</h1>
+    <h2>Happy Time</h2> 
     </header>
-<button id='myButton'>click me!</button>
-(Quoteme)
+<button onClick={getQuote(quote)}>Happiness Quote</button>
+
     </body>
-    
+    <p>{Place()}</p>
     
       </div>
   )
