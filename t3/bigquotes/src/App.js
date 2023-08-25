@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {useState, useEffect} from "react";
-
+import Place from './Place'
 
 
 
@@ -11,7 +11,7 @@ export default function App () {
  
   const [quote, setQuote] = useState([]);
   
-  
+
   
   useEffect(() => {
     getQuote()
@@ -23,6 +23,7 @@ export default function App () {
     } ).then(function access(response) {
       setQuote(response.data)
       console.log(response.data)
+      
       },
      /*function(error, response, body) {
       if(error) return console.error('Request failed:', error);
@@ -40,7 +41,8 @@ export default function App () {
        "X-Api-Key": process.env.REACT_APP_API_KEY,
      }
    } ).then(function access(response) {
-     return setQuote(response.data)
+      setQuote(response.data)
+      
      },
  )};
 
@@ -77,15 +79,22 @@ const fetchPosts = async() =>{
  fetchPosts(responsePosts.data);
 }
 */
-let x5 = quote
+
+/*let btn = document.getElementById("myButton").addEventListener("click", getQuote);
+
+let x5 = quote*/
+ 
+
   return (
       <div className='App'>
          <body>
   <header>
-    <h1>Sartre's List</h1>
-    <h2></h2> 
+    <h1>Happy Quotes</h1>
+    <h2>Happy Time</h2> 
+    <h3>{Place()}</h3>
     </header>
-<button onClick ={getQuote}>click me!</button>
+    <button id='myButton' onClick={getQuote(quote)}>Happiness Quote</button>
+    
 
     </body>
     

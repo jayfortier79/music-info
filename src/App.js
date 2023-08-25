@@ -62,6 +62,8 @@ const fetchPosts = async() =>{
 }
 */
 
+
+
   return (
       <div className='App'>
          <body>
@@ -69,7 +71,7 @@ const fetchPosts = async() =>{
     <h1>Sartre's List</h1>
     <h2></h2> 
     </header>
-<button onclick={Quoteme}>click me!</button>
+<button id='myButton'>click me!</button>
 (Quoteme)
     </body>
     
