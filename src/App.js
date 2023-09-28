@@ -1,13 +1,13 @@
 import axios from 'axios';
 import {useState, useEffect} from "react";
 import Place from './Place'
+require('dotnev').config()
 
-
-
+const apikey= process.env.REACT_APP_API_KEY
 
 export default function App () {
 
-  console.log(process.env.REACT_APP_API_KEY)
+  console.log(apikey)
  
   const [quote, setQuote] = useState([]);
   
@@ -16,7 +16,7 @@ export default function App () {
     var category = 'happiness';
      axios.get('https://api.api-ninjas.com/v1/quotes?category=' + category, {
       headers: { 
-        "X-Api-Key": process.env.REACT_APP_API_KEY,
+        "X-Api-Key": apikey,
       }
     } ).then(function access(response) {
       setQuote(response.data)
